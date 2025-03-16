@@ -9,7 +9,7 @@ from django.views import View
 class StudentListView(View):
     def get(self, request):
         students_list = Student.objects.all()
-        paginator = Paginator(students_list, 10)  # Show 5 students per page
+        paginator = Paginator(students_list, 10)  # Show 10 students per page
         page_number = request.GET.get('page')
         students = paginator.get_page(page_number)
         return render(request, 'students/student_list.html', {'students': students})
